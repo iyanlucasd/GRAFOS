@@ -1,0 +1,209 @@
+\documentclass[12pt]{article}                                                                                                                       
+\usepackage{sbc-template}                                                 
+\usepackage{graphicx,url}                                                 
+\usepackage[utf8]{inputenc}                                               
+\usepackage[brazil]{babel}                                                      
+\usepackage{graphicx}
+
+\title{Cheatsheet -- Teórico\\ Teoria de Grafos e Computabilidade}
+\author{Iyan Lucas Duarte Marques\inst{1}}
+
+\address{Instituto de Ciências Exatas e Informática - Pontifícea Universidade Católica Minas Gerais (PUC-MG)}
+
+\begin{document}
+
+\maketitle
+
+\section{O que é o Grafos}
+Grafos é um arcabouço matemático utilizado na definição e/ou resolução dos problemas.
+Uma forma de abstração matemática para representação de problemas.
+
+\subsection{Conceitos}
+\begin{itemize}
+	\item \textbf{Grafos:} Coleção de vértices e arestas.
+	\item \textbf{Vértices:\footnote{
+			      É a bolinha do grafo
+		      }} Objeto simples que pode ter nomes e outros atributos.
+	      \item\textbf{Aresta:\footnote{
+			      É a linha que liga duas bolinhas
+		      }} Conexão entre dois vértices.
+\end{itemize}
+
+A representação matemática de um grafo se dá pela seguinte forma:
+
+Um grafo $G = (V,E)$ em que $V$ é o conjunto de vértices e $E$ o conjunto de arestas de forma que:
+\begin{equation}
+	E = \{(u, v) | u, v \in V\}
+\end{equation}\footnote{
+	Tradução: O conjunto de arestas $E$ é igual à aresta de $u$ a $v$, tal que $u$ e $v$ pertencem ao grupo de vértices (são vértices).
+}
+Para um grafo direcionado.
+
+\begin{equation}
+	E = \{\{u, v\} | u, v \in V\}
+\end{equation}\footnote{
+	Um grafo não direcionado usa chaves (como se fosse um dicionário/lista) enquanto um direcionado usa parênteses (como uma tupla).
+}
+Para um grafo não-direcionado.
+
+\subsection{Grafo direcionado}
+É um par $G = (V, E)$, em que $V$ é um conjunto finito e $E$ é uma relação binária em $V$.
+A representação das arestas em um grafo direcionado é a $\longrightarrow$ setinha.
+
+\subsection{Grafo não-direcionado}
+É um par $G = (V, E)$, em que o conjunto de arestas $E$ consiste em pares de vértices não orientados, ou seja, a aresta $(v_j, v_i)$\footnote{
+	Nota: a letra $v$ é a representação de vértice e o símbolo $_i$ representa qual vértice.
+} e a $(v_i, v_j)$ são a mesma aresta.
+
+\section{Terminologia}
+
+\subsection{Dos Grafos}
+
+\subsubsection{Grafos Simples}
+É um grafo que não possui loops ou arestas paralelas.
+
+\subsubsection{Regularidade}
+Um grafo no qual todos os vértices possuem o mesmo grau, é chamado de grafo regular.
+
+\subsubsection{Nulicidade}
+Um grafo sem nenhuma aresta é chamado de grafo nulo. Todos os vértices em um grafo nulo são vértices isolados.
+
+\subsubsection{Rotulação}
+Um grafo $G = (V, A)$ é dito ser rotulado quando cada elemento\footnote{
+	Sendo elemento um grafo, aresta ou qualquer coisa presente no conjunto $G$
+} estiver associado a um rótulo [nome].
+
+\subsubsection{Valoração (Ponderado)}
+Um grafo $G = (V, A)$ é dito ser valorado quando uma aresta, um vértice ou ambos possuem uma  ou mais funções associando-os a um conjunto numérico.
+Ou seja, cada elemento pode conter um peso (valor).
+
+\subsubsection{Completo}
+Um grafo $G = (V, A)$ é completo se para cada par de vértices existe uma arestas ligando os dois.
+Ou seja, todo mundo tem que estar ligado a todo mundo.\\
+$\longrightarrow$ \textit{Em um grafo completo, quaisquer dois vértices distintos são adjancentes $(K_n)$}.
+$\longrightarrow$ \textit{Seja $K_n$ um grafo completo com $n$ vértices.
+	O número de arestas de um grafo completo é:}\\
+
+\begin{equation}
+	|E| = \displaystyle\frac{(n - 1) * n}{2}
+\end{equation}\footnote{
+	$|E| \longrightarrow$ é o valor absoluto do número de arestas. $n \longrightarrow$ é o número de vértices.
+}
+
+\subsubsection{Grafo conexo}
+Um grafo é conexo quando existe pelo menos um caminho entre todos os pares do vértices.
+
+\subsubsection{Bipartição}
+Um grafo é bipartido quando um conjunto $V$ de vértices pode ser separado em 2 subconjuntos em que todas as arestas do grafo ligue um vértice $v_1$ a um $v_2$.\\
+Já um grafo pode ser dito bipartido completo quando cada vértice de $v_1$ é conexo a \textbf{todo} vértice de $v_2$.
+O número de arestas de um grafo bipartido completo em 2 subconjuntos $n$ e $m$ é:
+\begin{equation}
+	|E| = n * m
+\end{equation}
+
+\subsection{Dos Vértices}
+
+\subsubsection{Vértices adjacentes}
+É quando dois vértices estão ligados (pontos finais) de uma $\longrightarrow$ \textit{setinha}.
+
+\subsubsection{Graus de vértices}
+O grau de cada vértice é representado pela terminologia $d(v)$.
+A forma que se calcula o grau depende do tipo do grafo:
+\begin{itemize}
+	\item \textbf{Grafo não-direcionado:} o grau $d(v)$ é o numero de arestas ($\longrightarrow$ \textit{setinhas}) que incidem em $v$
+	\item \textbf{Grafo direcionado:} o grau $d(v)$ é dividido entre grau de entrada $d^+(v)$ e grau de saída $d^-(v)$.
+	      O numero de arestas ($\longrightarrow$ \textit{setinhas}) que incidem em $v$ é o grau de entrada.
+	      Os que saem são o grau de saida
+\end{itemize}
+
+A soma dos graus de todos os vértices de um grafo $G$ é duas vezes o número de arestas de $G$, e portanto é par.
+\begin{equation}
+	\Sigma_{i=1}^n d(v_i) = 2e
+\end{equation}
+
+\textbf{\textit{ATENÇÃO:}} Um loop conta duas vezes pro grau do vértice.
+
+\subsubsection{Incidência}
+Quando um vértice $v$ é o vértice final (quando o vértice não aponta pra ninguém, só recebe a $\longrightarrow$ \textit{setinhas}) de alguma aresta $e = uv$\footnote{
+	Nota: as letras estão em minúsculo porque estão representando uma aresta e uma vértice, diferente da letra maiúscula que representa o grafo e o conjunto de aretas.
+}, é dito que $u$ é incidente [ou incide] em $v$.
+
+\subsubsection{Vértice isolado}
+Um vértice com nenhuma aresta incidente é chamado de vértice isolado
+
+\subsubsection{Pendência}
+Um vértice com grau 1 é chamado de vértice pendente
+
+\subsection{Das Arestas}
+
+\subsubsection{Loop}
+É quando tem uma aresta que vai pro mesmo vértice, tipo uma máquina de estado finito.
+A aresta $(v_i, v_i)$
+
+\subsubsection{Arestas Paralelas}
+Quando um vértice manda duas $\longrightarrow$ \textit{setinhas} para outro vértice.
+
+\subsubsection{Adjacência}
+Duas arestas \textbf{não paralelas} são adjacentes se elas incidem a um vértice comum, ou seja, se duas arestas que não saem do mesmo vértice apontam a $\longrightarrow$ \textit{setinha} pra um mesmo vértice.
+
+
+\subsection{Das Operações}
+
+\subsubsection{Caminhada \textit{(walk)}}
+\begin{itemize}
+	\item Uma caminhada num grafo $G = (V, E)$ é uma sequência finita e não nula $W$\footnote{
+		      Ex.: $W = v_0 e_1 v_1 e_2 \dots e_k v_k$
+	      }
+	\item A caminhada precisa alternar entre vértices e arestas, tal que, para $1 \leq i \leq k$, as extremidades da aresta $e_i$ são $v_(i-1)$ e $v_i$.\footnote{
+		      Ou seja, na caminhada, não se pode andar de um vértice para outro se eles não estão ligados.
+	      }
+	\item Nós definimos que $W$ é a caminhada de $v_0$ [a orígem] para $v_k$ [o término]
+\end{itemize}
+
+\subsubsection{Trilha \textit{(Trail)}}
+\begin{itemize}
+	\item Uma trilha é uma caminhada em $G = (V, E)$ se as arestas de $W$ são distintas
+	\item Não se pode repetir aresta
+\end{itemize}
+
+\subsubsection{Trajeto \textit{(path)}}
+\begin{itemize}
+	\item Um trajeto é uma trilha em $G = (V, E)$ se os vértices de $W$ são distintos
+	\item Não se pode repetir aresta, nem vértices
+\end{itemize}
+
+\subsubsection{Ciclo \textit{(cycle)}}
+\begin{itemize}
+	\item Um ciclo é um trajeto fechado, onde a orígem e o término são a mesma aresta
+	\item Não se pode repetir aresta, nem vértices
+\end{itemize}
+
+\subsubsection{União}
+Seja $G_1=(V_1, A_1)$ e $G_2 = (V_2, A_2)$ dois grafos, o grafo $G = G_1 \cup G_2$ representa a união de dois grafos.
+Isso significa que ambos os conjuntos de vértices e arestas são unidos, \textbf{mas} não se cria novas arestas para se conectarem.
+Podem ser aplicadas a qualquer número finito de grafos e são operações associativas e comutativas.
+
+\subsubsection{Soma}
+Seja $G_1=(V_1, A_1)$ e $G_2 = (V_2, A_2)$ dois grafos, o grafo $G = G_1 + G_2$ representa a soma de dois grafos.
+Isso significa que ambos os conjuntos de vértices são somados, \textbf{e se cria} novas arestas para conectarem cada vértice de cada subconjunto.
+Podem ser aplicadas a qualquer número finito de grafos e são operações associativas e comutativas.
+
+\subsubsection{Remoção}
+
+\begin{itemize}
+	\item \textbf{\textit{Remoção de aresta:}}
+	      Se $E$ é uma aresta de um grafo $G$, denota-se $G-$ e o grafo obtido de $G$ pela remoção da aresta e.
+	      Se $E$ é um conjunto de arestas em $G$, denota-se $G-E$ ao grafo obtido pela remoção das arestas em $E$.
+	\item \textbf{\textit{Remoção de vértice:}}
+	      Se $v$ é um vértice de um grafo $G$ denota-se por $G - v$ o grafo obtido de $G$ pela remoção do vértice $v$ conjuntamente com as arestas incidentes a $v$.
+	      Denota-se $G - S$ ao grafo obtido pela remoção dos vértices em $S$,
+	      sendo S um conjunto qualquer de vértices de $G$
+	\item \textbf{\textit{Contração de aresta:}} Denota-se por G/e o grafo obtido pela contração da aresta $e$.
+	Quando se remove a aresta $e = (v, w)$ de $G$, se une os vértices resultantes de forma que as $\longrightarrow$ \textit{setinhas} dos dois antigos vértices apontem para o novo.
+\end{itemize}
+
+
+
+
+
+\end{document}
