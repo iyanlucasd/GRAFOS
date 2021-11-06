@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}                                                                                                                       
+\usepackage{sbc-template}                                                 
+\usepackage{graphicx,url}                                                 
+\usepackage[utf8]{inputenc}                                               
+\usepackage[brazil]{babel}                                                      
+\usepackage{graphicx}
+
+\title{Assignment 1 \\ Teoria de Grafos e Computabilidade}
+\author{Iyan Lucas Duarte Marques\inst{1}, Samir do Amorim Cambraia\inst{1}}
+
+\address{Instituto de Ciências Exatas e Informática - Pontifícea Universidade Católica Minas Gerais (PUC-MG)}
+
+\begin{document}
+
+\maketitle
+
+\section{Problema}
+\textit{"A atlética Pinguins do ICEI PUC-MG lançou uma nova linha de camisas e uniformes.
+Após o grande sucesso,  foram encomendadas várias camisas.
+Depois de uma reunião da diretoria, foram decididos arbitrariamente 5 pontos de distribuição em Belo Horizonte.
+Guilherme, recentemente formado condutor e responsável pela distribuição dos uniformes, precisa entregar as mesmas nos 5 pontos especificados no mapa pelo presidente Samir.\\
+Qual o melhor trajeto que Guilherme pode fazer começando no ponto mais próximo da loja, o ponto 1, passando por todos os pontos?"}
+
+\section{Representação}
+Podemos considerar os pontos de distribuição marcados no mapa de Belo Horizonte (mapa abaixo) como os vértices.
+Desta forma modelando um grafo $G = (V, E)$ em que $V$ é o conjunto de vértices e $E$ o conjunto de arestas
+de forma que os pontos 1, 2, 3 ,4 e 5 pertencem ao conjunto $V$ e as arestas que se interligam pertencem ao conjunto $E$.
+\begin{equation}
+    E = \{\{1, 2, 3, 4, 5\} \forall 1, 2, 3, 4, 5 \in V\}
+\end{equation}
+
+    \begin{figure}[h!]
+        \includegraphics[width=0.5\textwidth]{imagens/grafos1.jpeg}
+    \end{figure}
+
+
+\subsection{Não Direcionado, Não Ponderado}
+A representação do grafo com as arestas ligando cada vértice.
+\begin{center}
+    
+    \begin{figure}[h!]
+        \includegraphics[trim={15cm 10cm 10cm 10cm},clip, width=0.5\textwidth]{imagens/grafos4.jpeg}
+    \end{figure}
+\end{center}
+
+
+\subsection{Direcionado, Não Ponderado}
+PA representação do grafo com as arestas representando a ligação entre os vértices e, as direções como o fluxo das vias de Belo Horizonte.
+\begin{center}
+    
+    \begin{figure}[h!]
+        \includegraphics[trim={10cm 7cm 7cm 7cm},clip, width=0.5\textwidth]{imagens/grafos2.jpeg}
+    \end{figure}
+
+\end{center}
+\subsection{Não Direcionado, Ponderado}
+A representação do grafo com as arestas representando as distâncias entre os vértices desconsiderando o sentido de fluxo das vias de Belo Horizonte.
+\begin{center}
+    
+    \begin{figure}[h!]
+        \includegraphics[trim={10cm 7cm 7cm 7cm},clip, width=0.5\textwidth]{imagens/grafos5.jpeg}
+    \end{figure}
+
+
+\end{center}
+\subsection{Direcionado, Ponderado}
+A representação do grafo com as arestas representando as distâncias entre os vértices considerando o sentido de fluxo das vias de Belo Horizonte.
+\begin{center}
+    
+    \begin{figure}[h!]
+        \includegraphics[trim={10cm 7cm 7cm 7cm},clip, width=0.5\textwidth]{imagens/grafos3.jpeg}
+    \end{figure}
+
+
+\end{center}
+\section{Implementação}
+
+
+
+
+\end{document}

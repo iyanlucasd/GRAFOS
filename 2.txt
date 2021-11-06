@@ -1,0 +1,9 @@
+Seja G=(V,E) e G'=(V',E') dois grafos não-direcionados.
+
+Analise as seguintes afirmações:
+
+G e G' são isomorfos se possuirem o mesmo número de vértice, o mesmo número de arestas, o mesmo número de componentes e a mesma sequência de graus dos vértices;
+Se G é um subgrafo de G', então há arestas de G'  que não estarão presentes em G;
+Caso G seja um subgrafo de G' e G' seja um subgrafo de G, então G e G' são iguais;
+Caso G seja o grafo completo de cinco vértices, e se G' for isomórfico ao grafo G, então G' será um subgrafo de cinco vértices
+Assinale V (verdadeiro) ou F (falso) para as afirmações (de cima para baixo). Informe qual seria a sequência correta de afirmações verdadeiras e falsas.
